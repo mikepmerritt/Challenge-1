@@ -12,7 +12,7 @@ public class Schedule {
 	// constructs a schedule from the file "Schedule.txt"
 	// "Schedule.txt" should include a date line as a header and a line for each event
 	public Schedule() {
-		_scheduleFile = new File("Schedule.txt");
+		findSchedule();
 		_events = new ArrayList<Event>();
 		try {
 			Scanner fileScan = new Scanner(_scheduleFile);
@@ -23,6 +23,16 @@ public class Schedule {
 		}
 		catch (FileNotFoundException e) {
 			// do nothing - there aren't any events yet as there is no file
+		}
+	}
+	
+	private void findSchedule() {
+		File currentDirectory = new File(".");
+		if (currentDirectory.getAbsolutePath().contains("\\src") || currentDirectory.getAbsolutePath().contains("/src")) {
+			_scheduleFile = new File("../Schedule.txt");
+		}
+		else {
+			_scheduleFile = new File("Schedule.txt");
 		}
 	}
 	
