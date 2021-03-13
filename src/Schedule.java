@@ -35,7 +35,8 @@ public class Schedule {
 				output.println("13;Basketball;Gym");
 				output.close();
 				
-				fileScan = new Scanner("Schedule.txt");
+				findSchedule("Schedule.txt");
+				fileScan = new Scanner(_scheduleFile);
 				_date = fileScan.nextLine();
 				while(fileScan.hasNextLine()) {
 					_events.add(new Event(fileScan.nextLine()));
