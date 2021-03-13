@@ -29,7 +29,7 @@ public class Schedule {
 	private void findSchedule() {
 		File currentDirectory = new File(".");
 		if (currentDirectory.getAbsolutePath().contains("\\src") || currentDirectory.getAbsolutePath().contains("/src")) {
-			_scheduleFile = new File("../Schedule.txt");
+			_scheduleFile = new File("Schedule.txt");
 		}
 		else {
 			_scheduleFile = new File("Schedule.txt");
@@ -44,5 +44,14 @@ public class Schedule {
 		}
 		return schedule;
 	}
-	
+
+	public Event getEvent(int i)
+	{
+		return _events.get(i);
+	}
+
+	public void reserveEvent(Event event) {
+		Event _rsvpEvent = event;
+		System.out.println("Ok you are now RSVPed for the event: "+ _rsvpEvent.getType() + " at " + _rsvpEvent.getTime() + " located at the " + _rsvpEvent.getLocation() + ".");
+	}
 }

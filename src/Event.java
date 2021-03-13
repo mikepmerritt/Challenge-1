@@ -1,3 +1,4 @@
+import org.omg.CORBA.IMP_LIMIT;
 
 public class Event {
 	
@@ -12,6 +13,19 @@ public class Event {
 		_type = type;
 		_location = location;
 		convertTime();
+	}
+
+	public int getTime() {
+		convertTime();
+		return _time;
+	}
+
+	public String getType(){
+		return _type;
+	}
+
+	public String getLocation(){
+		return _location;
 	}
 	
 	// constructor for making existing events, used when dealing with schedule file
