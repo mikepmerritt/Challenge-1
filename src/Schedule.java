@@ -44,12 +44,12 @@ public class Schedule {
 		}
 		return schedule;
 	}
-
+	//getter for the event that is in the current index
 	public Event getEvent(int i)
 	{
 		return _events.get(i);
 	}
-
+	//Adds the ability to reserve a spot in an event
 	public void reserveEvent(Event event) {
 		Event _rsvpEvent = event;
 		System.out.println("Ok you are now RSVPed for the event: "+ _rsvpEvent.getType() + " at " + _rsvpEvent.getTime() + " located at the " + _rsvpEvent.getLocation() + ".");

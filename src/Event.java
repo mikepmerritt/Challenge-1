@@ -14,7 +14,7 @@ public class Event {
 		_location = location;
 		convertTime();
 	}
-
+	//Added getters for each part of an event
 	public int getTime() {
 		convertTime();
 		return _time;
