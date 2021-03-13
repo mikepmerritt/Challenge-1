@@ -86,7 +86,7 @@ public class Schedule {
 	public String toString() {
 		String schedule = _date + "\n";
 		for(int event = 0; event < _events.size(); event++) {
-			schedule += _events.get(event).toReadableString();
+			schedule += _events.get(event).toReadableString() + "\n";
 		}
 		return schedule;
 	}
