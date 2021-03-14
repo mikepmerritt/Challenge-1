@@ -83,9 +83,22 @@ public class Driver {
 				
 				// write to the file
 				try {
-		            PrintWriter output = new PrintWriter(new FileOutputStream(_schedule.getScheduleFile(), true));
-		            output.println(formattedOutput);
-		            output.close();
+					boolean conflict = false;
+					Scanner searchForConflicts = new Scanner(_schedule.getScheduleFile());
+					searchForConflicts.nextLine(); // skip date
+					while(searchForConflicts.hasNextLine()) {
+						if(formattedOutput.substring(0, 2).equals(searchForConflicts.nextLine().substring(0, 2))) {
+							conflict = true;
+						}
+					}
+					if(!conflict) {
+			            PrintWriter output = new PrintWriter(new FileOutputStream(_schedule.getScheduleFile(), true));
+			            output.println(formattedOutput);
+			            output.close();
+					}
+					else {
+						System.out.println("Unfortunately there is already an event scheduled at that time, so your event could not be scheduled.");
+					}
 		        }
 		        catch (FileNotFoundException e) {
 		            System.out.println("The schedule file could not be found.");
