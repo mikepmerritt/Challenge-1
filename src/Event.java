@@ -95,5 +95,5 @@ public class Event {
 	        for(int t2 = 0; t2 < _teamTwoSize.length; t2++) {
 	            System.out.println(_teamTwoSize[t2]);
 	        }
-	
+		}
 }
