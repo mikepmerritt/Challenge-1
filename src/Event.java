@@ -1,5 +1,3 @@
-import org.omg.CORBA.IMP_LIMIT;
-
 public class Event {
 	
 	private int _time; // expects military time (int between 0 and 23)
@@ -26,6 +24,10 @@ public class Event {
 
 	public String getLocation(){
 		return _location;
+	}
+	
+	public String getReadableTime() {
+		return _readableTime;
 	}
 	
 	// constructor for making existing events, used when dealing with schedule file
