@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Driver {
@@ -36,8 +39,9 @@ public class Driver {
 		System.out.println("4. Schedule another event");
 		System.out.println("5. Get a membership");
 		String _option = _input.nextLine();
+		
 		if(_option.equals("1")) {
-			// task 3
+			addEvent(_input, _schedule, "Gym");
 		}
 		else if(_option.equals("2")) {
 			System.out.println("Would you like to RSVP for an event?");
@@ -81,4 +85,79 @@ public class Driver {
 		System.out.println("Thank you for visiting! If you have more concerns, please run the program again.");
 		_input.close();
 	}
+	
+	// schedules a reservation
+	// if successful, the new event will be added to the schedule file
+	// input should be _input from main, schedule should be _schedule from main, and location should be where the event is
+	public static void addEvent(Scanner input, Schedule schedule, String location) {
+		
+		String formattedOutput = "";
+		
+		System.out.println("What hour would you like to reserve the " + location + " for? (1-12)");
+		int _timeChoice;
+		
+		try {
+			// get hour
+			_timeChoice = Integer.parseInt(input.nextLine());
+			if(_timeChoice < 1 || _timeChoice > 12) {
+				throw new NumberFormatException(); // bad time, exit with failure
+			}
+			
+			// get time of day
+			System.out.println("Would you like the reservation at " + _timeChoice + " AM or " + _timeChoice + " PM? (AM/PM)");
+			String _timeOfDay = input.nextLine();
+			if (_timeOfDay.equals("AM")) {
+				if(_timeChoice == 12) {
+					formattedOutput += 0;
+				}
+				else {
+					formattedOutput += _timeChoice;
+				}
+			}
+			else if (_timeOfDay.equals("PM")) {
+				if(_timeChoice == 12) {
+					formattedOutput += _timeChoice;
+				}
+				else {
+					formattedOutput += _timeChoice + 12;
+				}
+			}
+			else {
+				throw new NumberFormatException(); // bad time, exit with failure
+			}
+			
+			// get sport
+			System.out.println("What are you scheduling with this reservation? (example: \"Basketball\")");
+			String _activity = input.nextLine();
+			formattedOutput += ";" + _activity + ";" + location;
+			
+			// write to the file
+			try {
+				boolean conflict = false;
+				Scanner searchForConflicts = new Scanner(schedule.getScheduleFile());
+				searchForConflicts.nextLine(); // skip date
+				while(searchForConflicts.hasNextLine()) {
+					if(formattedOutput.substring(0, 2).equals(searchForConflicts.nextLine().substring(0, 2))) {
+						conflict = true;
+					}
+				}
+				if(!conflict) {
+		            PrintWriter output = new PrintWriter(new FileOutputStream(schedule.getScheduleFile(), true));
+		            output.println(formattedOutput);
+		            output.close();
+				}
+				else {
+					System.out.println("Unfortunately there is already an event scheduled at that time, so your event could not be scheduled.");
+				}
+	        }
+	        catch (FileNotFoundException e) {
+	            System.out.println("The schedule file could not be found.");
+	        }
+		}
+		catch (NumberFormatException e) {
+			System.out.println("An error occurred, most likely due to invalid input. Please run the program again to retry.");
+		}
+	}
+	
 }
+

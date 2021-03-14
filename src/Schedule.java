@@ -95,6 +95,12 @@ public class Schedule {
 	{
 		return _events.get(i);
 	}
+	
+	// getter for the schedule file being used
+	public File getScheduleFile() {
+		return _scheduleFile;
+	}
+	
 	//Adds the ability to reserve a spot in an event
 	public void reserveEvent(Event event) {
 		Event _rsvpEvent = event;
