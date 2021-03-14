@@ -172,9 +172,9 @@ public class Driver {
 	public static void gameScore() {
 		Scanner myScanner = new Scanner(System.in);
 		System.out.println("How many points does Team 1 have?");
-		String _teamOneScore = myScanner.nextInt();
+		int _teamOneScore = myScanner.nextInt();
 		System.out.println("How many points does Team 2 have?");
-		Int _teamTwoScore = myScanner.nextInt();
+		int _teamTwoScore = myScanner.nextInt();
 		if (_teamOneScore > _teamTwoScore) {
 			System.out.println("Team One Wins!");
 		}
