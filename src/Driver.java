@@ -78,6 +78,31 @@ public class Driver {
 		}
 		else if(_option.equals("4")) {
 			// task 10
+			String _type, _location;
+			int _hour;
+			try {
+				PrintWriter output = new PrintWriter(new FileOutputStream("Schedule.txt", true));
+				  System.out.println("Please type in the hour you'd like to schedule in military time.");
+				_hour  = _input.nextInt();
+				_input.nextLine();
+				while (_hour < 0 || _hour > 24)  {
+					System.out.println("Please type in the hour you'd like to schedule in military time.");
+					_hour  = _input.nextInt();
+					_input.nextLine();
+				} 
+				System.out.println("Please type in the event you'd like to schedule.");
+				_type = _input.nextLine();
+				System.out.println("Please type in the area you'd like to reserve.");
+				_location = _input.nextLine();
+				Event _newEvent = new Event(_hour, _type, _location);
+				output.println(_newEvent);
+				System.out.println("Thanks, we have now updated the schedule!");
+				//output.println("17;Basketball;Gym");
+				output.close();
+	        }
+	        catch (FileNotFoundException e) {
+	            System.out.println("The schedule file could not be found.");
+	        }
 		}
 		else if(_option.equals("5")) {
 			// task 11
