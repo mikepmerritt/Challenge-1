@@ -63,6 +63,13 @@ public class Driver {
 		}
 		else if(_option.equals("3")) {
 			// task 5
+			SportsArray _sportArray = new SportsArray();
+			System.out.println(_sportArray.toString());
+			System.out.println("Please enter the name of the sport you would like to play?");
+			String _choice = _input.nextLine();
+			String _sportChoice = _choice.toLowerCase();
+			Sport _sport = new Sport(_sportChoice);
+			System.out.println("You have selected to play: " + _sport);
 			System.out.println("Would you like to (1) choose teams, or (2) generate two random teams of 5?");
 			String _teamOption = _input.nextLine();
 			if (_teamOption.equals("1")) {
