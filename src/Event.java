@@ -51,5 +51,32 @@ public class Event {
 	public String toReadableString() {
 		return _readableTime + ": " + _type + " at " + _location;
 	}
+	// setting up random teams
+	public String randomTeams(String[] _arr) {
+		String[] _teamOneSize = new array[5];
+		String[] _teamTwoSize = new array[5];
+		int i = 0;
+		while (!(_teamOneSize.length > 5) && !(_teamTwoSize.length > 5)) {
+			int _result = Math.random();
+		    if (_result < .5) {
+		        _teamOneSize.add(_arr[i]);
+		    }
+		    else {
+		    	_teamTwoSize.add(_arr[i]);
+		    }
+		    i++;
+		}
+		if (_teamOneSize.length == 5) {
+		    for (int j = i; j < 10; j++) {
+		    	_teamTwoSize.add(_arr[i]);
+		    }
+		}
+		else {
+			for (int j = i; j < 10; j++) {
+		    	_teamOneSize.add(_arr[i]);
+		    }
+		}
+	}
+	
 	
 }
