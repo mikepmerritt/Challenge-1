@@ -67,5 +67,49 @@ public class Event {
 	public String toReadableString() {
 		return _readableTime + ": " + _type + " at " + _location;
 	}
-	
+	// setting up random teams
+	public static void randomTeams(String[] _arr) {
+		String[] _teamOneSize = new String[5];
+		String[] _teamTwoSize = new String[5];
+		int _teamOneIndex = 0;
+        int _teamTwoIndex = 0;
+
+		int i = 0;
+		 while (_teamOneIndex < 5 && _teamTwoIndex < 5) {
+			 double _result = Math.random();
+			 if (_result < .5) {
+				 System.out.println("Team 1");
+				 _teamOneSize[_teamOneIndex] = _arr[i];
+				 _teamOneIndex++;
+			 }
+			 else {
+				 System.out.println("Team 2");
+				 _teamTwoSize[_teamTwoIndex] = _arr[i];
+				 _teamTwoIndex++;
+			 }
+			 i++;
+		 }
+	        
+		 if (_teamOneIndex == 5) {
+			 for (int j = i; j < 10; j++) {
+				 _teamTwoSize[_teamTwoIndex] = _arr[j];
+	             _teamTwoIndex++;
+			 }
+	     	}
+		 else {
+			 for (int j = i; j < 10; j++) {
+				 _teamOneSize[_teamOneIndex] = _arr[j];
+				 _teamOneIndex++;
+			 }
+	     	}
+	        
+	     	System.out.println("Team 1");
+	     	for(int t1 = 0; t1 < _teamOneSize.length; t1++) {
+	     		System.out.println(_teamOneSize[t1]);
+	        }
+	        System.out.println("Team 2");
+	        for(int t2 = 0; t2 < _teamTwoSize.length; t2++) {
+	            System.out.println(_teamTwoSize[t2]);
+	        }
+		}
 }

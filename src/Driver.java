@@ -70,7 +70,8 @@ public class Driver {
 			}
 			else {
 				System.out.println("Randomly generating teams of 5...");
-				// task 7
+				String[] _arr = new String[10];
+				Event.randomTeams(players(_arr));
 			}
 			// task 9 ("if you want to switch up the teams, do something here")
 			// task 8 ("when you finish playing, input the final score")
@@ -159,5 +160,13 @@ public class Driver {
 		}
 	}
 	
+	public static String[] players(String[] _arr) {
+		Scanner myScanner = new Scanner(System.in);
+		System.out.println("Please enter the name of the 10 players");
+		for (int i = 0; i < 10;i++) {
+			_arr[i] = myScanner.nextLine();
+		}
+		return _arr;
+	}
 }
 
