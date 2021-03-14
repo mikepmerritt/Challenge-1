@@ -27,7 +27,22 @@ public class Driver {
 		}
 		System.out.println("Here is the schedule:");
 		System.out.println(schedule);
+
+		System.out.println("Would you like to RSVP for an event?");
+		String _userChoice = input.nextLine();
+		if(_userChoice.equalsIgnoreCase("Yes")) {
+			System.out.println("Please enter the event you would like to RSVP for in the order it appears in the schedule. Ex: 0, 1, 2...");
+			int _eventChoice = input.nextInt();
+			try {
+				Event _chosenEvent = schedule.getEvent(_eventChoice);
+				schedule.reserveEvent(_chosenEvent);
+			}
+			catch (IndexOutOfBoundsException e) {
+				System.out.println("Sorry, that input was invalid.");
+			}
+		} else {
+
+		}
 		input.close();
 	}
-	
 }

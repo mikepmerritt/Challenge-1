@@ -1,4 +1,3 @@
-
 public class Event {
 	
 	private int _time; // expects military time (int between 0 and 23)
@@ -12,6 +11,23 @@ public class Event {
 		_type = type;
 		_location = location;
 		convertTime();
+	}
+	//Added getters for each part of an event
+	public int getTime() {
+		convertTime();
+		return _time;
+	}
+
+	public String getType(){
+		return _type;
+	}
+
+	public String getLocation(){
+		return _location;
+	}
+	
+	public String getReadableTime() {
+		return _readableTime;
 	}
 	
 	// constructor for making existing events, used when dealing with schedule file
