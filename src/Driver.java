@@ -82,6 +82,7 @@ public class Driver {
 			}
 			// task 9 ("if you want to switch up the teams, do something here")
 			// task 8 ("when you finish playing, input the final score")
+			gameScore();
 		}
 		else if(_option.equals("4")) {
 			// task 10
@@ -199,6 +200,22 @@ public class Driver {
 			_arr[i] = myScanner.nextLine();
 		}
 		return _arr;
+	}
+	public static void gameScore() {
+		Scanner myScanner = new Scanner(System.in);
+		System.out.println("How many points does Team 1 have?");
+		int _teamOneScore = myScanner.nextInt();
+		System.out.println("How many points does Team 2 have?");
+		int _teamTwoScore = myScanner.nextInt();
+		if (_teamOneScore > _teamTwoScore) {
+			System.out.println("Team One Wins!");
+		}
+		else if (_teamOneScore < _teamTwoScore) {
+			System.out.println("Team Two Wins!");
+		}	
+		else {
+			System.out.println("The game ended as a tie!");
+		}
 	}
 }
 
