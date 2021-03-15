@@ -81,6 +81,7 @@ public class Driver {
 				Event.randomTeams(players(_arr));
 			}
 			// task 9 ("if you want to switch up the teams, do something here")
+			midGameSubs();
 			// task 8 ("when you finish playing, input the final score")
 			gameScore();
 		}
@@ -215,6 +216,17 @@ public class Driver {
 		}	
 		else {
 			System.out.println("The game ended as a tie!");
+		}
+	}
+	public static void midGameSubs() {
+		Scanner myScanner = new Scanner(System.in);
+		System.out.println("Do you want to changed the made up teams?");
+		String _answer = myScanner.nextLine();
+		if (_answer.equalsIgnoreCase("Yes")) {
+			Event.randomTeams(players(new String[10]));
+		}
+		else {
+			System.out.println("Enjoy the game!");
 		}
 	}
 }
