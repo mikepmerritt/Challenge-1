@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Driver {
-	
+
 	public static void main(String[] args) {
 		Scanner _input = new Scanner(System.in);
 		Schedule _schedule;
@@ -74,6 +74,10 @@ public class Driver {
 			String _teamOption = _input.nextLine();
 			if (_teamOption.equals("1")) {
 				// task 6
+				String[] _players = new String[10];
+				System.out.println("Enter the 5 names on Team 1 first. Then the 5 on Team 2.");
+				_players = players(_players);
+				_sport.teams(_players);
 			}
 			else {
 				System.out.println("Randomly generating teams of 5...");
