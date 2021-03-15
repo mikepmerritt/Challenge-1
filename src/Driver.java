@@ -223,10 +223,10 @@ public class Driver {
 		System.out.println("Do you want to changed the made up teams?");
 		String _answer = myScanner.nextLine();
 		if (_answer.equalsIgnoreCase("Yes")) {
-			Event.randomTeams(players(_arr));
+			Event.randomTeams(players(new String[10]));
 		}
 		else {
-			return;
+			System.out.println("Enjoy the game!");
 		}
 	}
 }
