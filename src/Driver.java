@@ -1,6 +1,9 @@
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Driver {
@@ -8,7 +11,7 @@ public class Driver {
 	public static void main(String[] args) {
 		Scanner _input = new Scanner(System.in);
 		Schedule _schedule;
-		
+		String[] _equipmentArray;
 		// get and print schedule file
 		System.out.println("Welcome! Do you have a custom schedule? (yes/no)");
 		String _response = _input.nextLine();
@@ -56,10 +59,30 @@ public class Driver {
 				catch (IndexOutOfBoundsException e) {
 					System.out.println("Sorry, that input was invalid.");
 				}
-			} else {
+			} 
+			else {
+				System.out.println("What equipment would you like to rent?");
+				_equipmentArray = new String[]{"basketball", "bat", "soccerball", "racquet", "frisbee", "kickball"};
+				for (String i: _equipmentArray) {
+					System.out.print(i);
+					System.out.print(", ");
+				}
+				System.out.println();
+				String _equipmentChoice = _input.nextLine();
+				List<String> _equipmentList = new ArrayList<>(Arrays.asList(_equipmentArray));
+				for(String item : _equipmentList) {
+					if(_equipmentList.contains(_equipmentChoice.toLowerCase())) {
+						// operation upon successful match
+						System.out.println("You are now reserved to rent the " + _equipmentChoice + ".");		
+						break;
+					}
+					else {
+						System.out.println("You have not chosen a valid piece of equipment.");
+						break;
+					}
 
+				}
 			}
-			// task 12
 		}
 		else if(_option.equals("3")) {
 			// task 5
@@ -106,7 +129,6 @@ public class Driver {
 				Event _newEvent = new Event(_hour, _type, _location);
 				output.println(_newEvent);
 				System.out.println("Thanks, we have now updated the schedule!");
-				//output.println("17;Basketball;Gym");
 				output.close();
 	        }
 	        catch (FileNotFoundException e) {
@@ -115,6 +137,22 @@ public class Driver {
 		}
 		else if(_option.equals("5")) {
 			// task 11
+			System.out.println("Are you interested in a membership?");
+			String _membershipChoice = _input.nextLine();
+			if(_membershipChoice.equalsIgnoreCase("Yes")) {
+				System.out.println("Membership perks include the ability to rent multiple pieces of equipment, reservations of more than one area, and access to exclusive events");
+				System.out.println("Membership costs $5 a month, would you like to buy?");
+				String _memberChoice = _input.nextLine();
+				if(_memberChoice.equalsIgnoreCase("Yes")) {
+					System.out.println("Thanks for purchasing a membership!");
+				}
+				else {
+					System.out.println("If you're not interested in purchasing a membership, you can check out our other offers.");
+				}
+
+			} else {
+				System.out.println("If you're not interested, you can check out our other offers.");
+			}
 		}
 		
 		System.out.println("Thank you for visiting! If you have more concerns, please run the program again.");
